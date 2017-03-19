@@ -21,6 +21,10 @@ Register page!
 	<input class="form-control" type="text" name="username">
 	<label>email</label>
 	<input class="form-control" type="text" name="email">
+	<label>address</label>
+	<input class="form-control" type="text" name="address">
+	<label>phone Number</label>
+	<input class="form-control" type="text" name="phoneNo">
 	<label>password</label>
 	<input class="form-control" type="text" name="password">
 	<button type="submit" class="btn btn-primary">Register</button>
