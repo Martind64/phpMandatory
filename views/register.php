@@ -30,7 +30,7 @@ Register page!
 		<input class="form-control" type="text" name="email">
 		<label>phone Number</label>
 		<input class="form-control" type="text" name="phoneNo">
-		<button style="margin-top: 12%;" type="submit" class="btn btn-primary">Register</button>
+		<button style="margin-top: 13%;" type="submit" class="btn btn-primary">Register</button>
 	</div>
 
 	</div>
