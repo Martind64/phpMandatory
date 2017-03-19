@@ -7,9 +7,11 @@
 <html>
 <head>
 	<title>Dashboard</title>
-	<?php require_once('../shared/bootstrap.php'); ?>
+	<?php require_once('../../shared/bootstrap.php'); ?>
 </head>
 <body>
+
+<a href="products/createProduct.php">Create a product</a>
 
 <div class="row">
 	<div class="col-lg-2">

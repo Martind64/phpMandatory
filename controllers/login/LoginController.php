@@ -40,7 +40,7 @@ class LoginController{
 				$_SESSION['login-message'] = "you are logged in";
 
 				if ($currentUser['role'] == 'ROLE_ADMIN') {
-					header('Location: ../../admin/dashboard.php');
+					header('Location: ../../views/admin/dashboard.php');
 				}
 				else{
 					header('Location: ../../views/index.php');
