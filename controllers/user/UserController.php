@@ -1,14 +1,8 @@
 <?php 
-
+require_once('../../Dbhandler.php');
+require_once('../../models/User.php');
 class UserController
 {
-
-	function __construct()
-	{
-		require_once('../../Dbhandler.php');
-		require_once('../../models/User.php');
-	}
-
 
 	function create(User $user){
 		$conn = new Dbhandler();

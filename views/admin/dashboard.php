@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <?php session_start() ?>
 
-<?php if (!isset($_SESSION['currentUser']) || !$_SESSION['currentUser']['role'] == 'ROLE_ADMIN') {
-	echo 'You need to be an admin to access this page';
-}else{ ?>
-<!DOCTYPE html>
+<?php if (isset($_SESSION['currentUser'])) {
+	if ($_SESSION['currentUser']['role'] != 'ROLE_ADMIN'){
+			echo "You have to be an admin to access this page";
+	}else{ ?>
 <html>
 <head>
 	<title>Dashboard</title>
@@ -19,11 +20,7 @@
 			<li class="active"><a href="#">items</a></li>
 		</ul>
 	</div>
-
 </div>
-
-
-
 </body>
-</html>
-<?php } ?>
+</html>		
+<?php }} ?>

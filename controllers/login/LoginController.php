@@ -4,7 +4,6 @@ require_once('../../Dbhandler.php');
 class LoginController{
 
 	function login(){
-
 		$indexPage = '../../views/index.php';
 
 		$conn = new Dbhandler();
