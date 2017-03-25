@@ -12,7 +12,8 @@
 </head>
 <body>
 
-<a href="products/createProduct.php">Create a product</a>
+<a href="products/createProduct.php">Create a product</a><br>
+<a href="categories/createCategory.php">Create a category</a>
 
 <div class="row">
 	<div class="col-lg-2">
