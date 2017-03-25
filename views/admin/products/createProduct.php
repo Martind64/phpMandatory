@@ -23,15 +23,15 @@
 		<div class="col-lg-6">
 			<label>name</label>
 			<input class="form-control" type="text" name="name">
-			<label>desription</label>
-			<input class="form-control" type="text" name="desription">
+			<label>description</label>
+			<input class="form-control" type="text" name="description">
 		</div>
 		<div class="col-lg-6">
 			<label>price</label>
 			<input class="form-control" type="text" name="price">
 			<label>imgPath</label>
-			<input class="form-control" type="text" name="email">
-			<button style="margin-top: 13%;" type="submit" class="btn btn-primary">Register</button>
+			<input class="form-control" type="text" name="imgPath">
+			<button style="margin-top: 13%;" type="submit" class="btn btn-primary">Create</button>
 		</div>
 	</form>
 	</div>
