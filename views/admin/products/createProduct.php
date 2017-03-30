@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+require_once('../../../controllers/subCategory/SubCategoryController.php');
+?>
 <!DOCTYPE html>
 <?php if (isset($_SESSION['currentUser'])){
 	if ($_SESSION['currentUser']['role'] != 'ROLE_ADMIN') {
@@ -25,6 +27,18 @@
 			<input class="form-control" type="text" name="name">
 			<label>description</label>
 			<input class="form-control" type="text" name="description">
+			<input hidden name="categoryId" value='<?php echo $_POST['id']?>'>
+			<label>sub category</label>
+			<select class="form-control" name="subCategory">
+				<?php  
+					$id = $_POST['id'];
+					$subCategory = new SubCategoryController();
+					$categories = $subCategory->findByCategoryId($id);
+					foreach ($categories as $key => $cat) {
+						echo "<option>$cat</option>";
+					}
+				?>
+			</select>
 		</div>
 		<div class="col-lg-6">
 			<label>price</label>
@@ -37,8 +51,10 @@
 	</div>
 	</div>
 </div>
-
 </body>
-<?php }} // Finishes authorization ?>
+<?php }} // Finishes authorization?>
+<?php 
 
+
+ ?>
 </html>
