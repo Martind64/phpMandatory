@@ -13,12 +13,13 @@ class CategoryController
 
 			$stmt->bind_param('s', $category->name);
 			$stmt->execute();
+			header('Location: ../../views/admin/dashboard.php');
 		}else{
 			echo mysqli_error($conn->dbc);
 		}
 	}
 
-	function getAll(){
+	function findAll(){
 		$conn = new Dbhandler();
 		$query = "SELECT id, category_name FROM category";
 
@@ -29,7 +30,7 @@ class CategoryController
 			$result = $stmt->get_result();
 
 			while ($row = $result->fetch_assoc()) {
-				$resultArray[$row['category_name']] = $row['id'];
+				$resultArray[] = ['category' => $row['category_name'], 'id' => $row['id']];
 			}
 
 			return $resultArray;
@@ -54,13 +55,3 @@ class CategoryController
 }
  ?>
 
-<!-- 		$result = $conn->dbc->query($sql);
-
-		if ($result->num_rows > 0) {
-		    // output data of each row
-		    while($row = $result->fetch_assoc()) {
-		        echo "id: " . $row["id"]. " - Name: " . $row["category_name"]. "<br>";
-		    }
-		} else {
-		    echo "0 results";
-		} -->

@@ -8,8 +8,8 @@
 
 <div class="container">
 	<div class="col-lg-5">
+	<a href="index.php">go back</a><br>
 	Register page!
-	<a href="index.php">go back</a>
 	<form action="../controllers/user/create.php" method="POST">
 	<div class="form-group">
 		<div class="col-lg-6">

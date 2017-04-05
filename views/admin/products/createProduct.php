@@ -5,8 +5,8 @@ require_once('../../../controllers/subCategory/SubCategoryController.php');
 <?php if (isset($_SESSION['currentUser'])){
 	if ($_SESSION['currentUser']['role'] != 'ROLE_ADMIN') {
 		echo 'You have to be an admin to access this page';
-	}else
-	{?>
+		exit;
+	}}?>
 	
 <html>
 <head>
@@ -14,6 +14,9 @@ require_once('../../../controllers/subCategory/SubCategoryController.php');
 	<?php require_once('../../../shared/bootstrap.php'); ?>
 </head>
 <body>
+
+
+
 
 <div class="container">
 <div class="row">
@@ -52,9 +55,4 @@ require_once('../../../controllers/subCategory/SubCategoryController.php');
 	</div>
 </div>
 </body>
-<?php }} // Finishes authorization?>
-<?php 
-
-
- ?>
 </html>

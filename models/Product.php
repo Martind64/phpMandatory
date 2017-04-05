@@ -9,11 +9,11 @@ class Product{
 	public $subCategory;
 	public $imgPath;
 
-	function __construct($name, $price, $description, $imgPath, $category, $subCategory)
+	function __construct($name, $description, $price, $imgPath, $category, $subCategory)
 	{
 		$this->name = $name;
-		$this->price = $price;
 		$this->description = $description;
+		$this->price = $price;
 		$this->imgPath = $imgPath;
 		$this->category = $category;
 		$this->subCategory = $subCategory;

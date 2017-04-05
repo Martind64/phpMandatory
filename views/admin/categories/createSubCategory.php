@@ -13,6 +13,7 @@ require_once('../../../controllers/category/CategoryController.php');?>
 	<?php require_once('../../../shared/bootstrap.php'); ?>
 </head>
 <body>
+
 <div class="container">
 <div class="row">
 	<div class="col-lg-5">
@@ -25,7 +26,7 @@ require_once('../../../controllers/category/CategoryController.php');?>
 			<select class="form-control" name="categoryName">
 			<?php  
 				$category = new CategoryController();
-				$categories = $category->getAll();
+				$categories = $category->findAll();
 				foreach ($categories as $name => $id) {
 					echo "<option>$name</option>";
 				}

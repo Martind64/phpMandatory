@@ -14,6 +14,7 @@ class SubCategoryController
 
 			$stmt->bind_param('ss', $subCategory->categoryId, $subCategory->name);
 			$stmt->execute();
+			header('Location: ../../views/admin/dashboard.php');
 		}else{
 			echo mysqli_error($conn->dbc);
 		}

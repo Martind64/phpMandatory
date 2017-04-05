@@ -17,6 +17,8 @@ class ProductsController
 		if ($stmt = $conn->dbc->prepare($query)) {
 			$stmt->bind_param('ssssss', $product->category, $product->subCategory, $product->name, $product->description, $product->price, $product->imgPath);
 			$stmt->execute();
+			header('Location: ../../views/admin/dashboard.php');
+
 		}else{
 			echo mysqli_error($conn->dbc);
 		}
@@ -35,17 +37,33 @@ class ProductsController
 		}
 	}
 
-	function getAll(){
+	function findAll(){
 		$conn = new Dbhandler();
-		$query = "SELECT * From products";
-		if ($stmt = $conn->dbc->prepare($query)) {
+		$query = "SELECT products.id, name, category_name, sub_category_name, description, price, img_path FROM products 
+		JOIN category ON category_id = products.category_id
+		JOIN sub_category on sub_category.id = products.sub_category_id";
+
+		$resultArray = [];
+
+	 		if ($stmt = $conn->dbc->prepare($query)) {
 			$stmt->execute();
-			$stmt->bind_result($result);
-			return $result;
+			$result = $stmt->get_result();
+
+			while ($row = $result->fetch_assoc()) {
+				$resultArray[] = ['name' => $row['name'], 'description' => $row['description'], 'imgPath' => $row['img_path'], 'price' => $row['price'], 'category' => $row['category_name'], 'subCategory' => $row['sub_category_name'] ];
+			}
+
+			return $resultArray;
 		}else{
 			echo mysqli_error($conn->dbc);
 		}
 	}
+
 }
+// For testing
+// $product = new ProductsController();
+// $r = $product->findAll();
+// echo "<pre>";
+// var_dump($r);
 
 ?>

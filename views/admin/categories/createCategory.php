@@ -16,7 +16,7 @@
 <div class="container">
 <div class="row">
 	<div class="col-lg-5">
-	Register page!
+	<p>Create a category</p>
 	<a href="../dashboard.php">go back</a>
 	<form action="../../../controllers/category/create.php" method="POST">
 	<div class="form-group">
