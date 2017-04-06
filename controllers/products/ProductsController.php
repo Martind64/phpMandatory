@@ -60,6 +60,29 @@ class ProductsController
 		}
 	}
 
+	function findBySubCategory(string $category){
+
+		$conn = new Dbhandler();
+		$query = "SELECT name, category_name, sub_category_name, description, price, img_path FROM products 
+		JOIN category ON category.id = products.category_id
+		JOIN sub_category on sub_category.id = products.sub_category_id
+		WHERE sub_category_name =?";
+		$resultArray = [];
+
+		if ($stmt = $conn->dbc->prepare($query)) {
+			$stmt->bind_param('s', $category);
+			$stmt->execute();
+			$result = $stmt->get_result();
+
+			while ($row = $result->fetch_assoc()) {
+				$resultArray[] = ['name' => $row['name'], 'description' => $row['description'], 'imgPath' => $row['img_path'], 'price' => $row['price'], 'category' => $row['category_name'], 'subCategory' => $row['sub_category_name'] ];
+			}
+			return $resultArray;
+		}else{
+			echo mysqli_error($conn->dbc);
+		}
+	}
+
 	function findAll(){
 		$conn = new Dbhandler();
 		$query = "SELECT products.id, name, category_name, sub_category_name, description, price, img_path FROM products 

@@ -59,6 +59,26 @@ class SubCategoryController
 			return $resultArray;
 	}
 
+	function findBelongsToParent($parent){
+		$conn = new Dbhandler();
+		$query = "SELECT sub_category_name FROM sub_category
+					JOIN category ON category.id = sub_category.category_id
+					WHERE category_name=?";
+
+		$resultArray = [];
+		if ($stmt = $conn->dbc->prepare($query)) {
+			$stmt->bind_param('s', $parent);
+			$stmt->execute();
+			$result = $stmt->get_result();
+			while ($row = $result->fetch_assoc()) {
+				$resultArray[] = ['subCategory' => $row['sub_category_name']];
+			}
+		}else{
+			echo mysqli_error($conn->dbc);
+		}
+			return $resultArray;
+	}
+
 	function findByName($name){
 		$conn = new Dbhandler();
 
@@ -74,6 +94,6 @@ class SubCategoryController
 }
 // FOR TESTING
 // $subCat = new SubCategoryController();
-// $c = $subCat->findByName('hej');
+// $c = $subCat->findBelongsToParent('Books');
 // var_dump($c);
  ?>

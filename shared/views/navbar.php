@@ -1,16 +1,28 @@
 <?php 
 require_once(__DIR__.'\..\..\controllers\products\ProductsController.php');
 require_once(__DIR__.'\..\..\controllers\category\CategoryController.php');
+require_once(__DIR__.'\..\..\controllers\subCategory\SubCategoryController.php');
 $categories = CategoryController::findAll();
-	
+$subCategory = new SubCategoryController();
  ?>
+<base href="http://localhost/projects/phpMandatory/"/>
 
 <div class="container">
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	  <ul class="nav navbar-nav">
+	   <a class="navbar-brand" href="views/index.php">Webshop</a>
+
 	  	<?php foreach ($categories as $key => $category) {
-	  		echo "<li><a href=''>".$category['category']."</a></li>";
+	  		echo "<li class='dropdown'>";
+	  		echo "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>".$category['category']."<span class='caret'></a></span>";
+	  		echo "<ul class='dropdown-menu'>";
+	  		$subcat = $subCategory->findBelongsToParent($category['category']);
+	  		foreach ($subcat as $key => $array) {
+	  			echo "<li><a href='views/products/".$array['subCategory'].".php'>".$array['subCategory']."</a></li>";
+	  		}
+	  		echo "</ul>";
+	  		echo "</li>";
 	  	} ?>
 	  </ul>
 
@@ -23,10 +35,8 @@ $categories = CategoryController::findAll();
 	          	?>
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-
-
 			            <li>
-			    	      <form action="..\controllers\login\login.php" class="navbar-form" method="POST">
+			    	      <form action="controllers\login\login.php" class="navbar-form" method="POST">
 					        <div class="form-group">
 					      	<a class="pull-right" href="register.php">register</a>
 					        	<span class="label label-default">Email</span>
@@ -44,7 +54,7 @@ $categories = CategoryController::findAll();
 			 {
 			 		$email = $_SESSION['currentUser']['email'];
 			 		echo "<li>$email</li><br>";
-					echo "<a href='../controllers/login/logout.php'>logout</a>";
+					echo "<a href='controllers/login/logout.php'>logout</a>";
 			 }
 			  ?>
 	        </li>

@@ -7,14 +7,14 @@ $productsController = new ProductsController();
 <html>
 <head>
 	<title>Index</title>
-	<?php require_once('../shared/bootstrap.php'); ?>
+	<?php require_once(__DIR__.'/../shared/bootstrap.php'); ?>
 	<link rel="stylesheet" type="text/css" href="../shared/style.css">
 </head>
 <body>
 
 <?php require_once(__DIR__."/../shared/views/navbar.php") ?>
-<div class="container-fluid">
-	<div class="col-lg-10 col-lg-push-1">
+<div class="container">
+	<div class="col-lg-12">
 	<table class="table table-hover">
 		<tr>
 			<th>Name</th>
@@ -34,7 +34,7 @@ $productsController = new ProductsController();
 						<td>$productName</td>
 						 <td>$description</td>
 						 <td>$price DKK</td>
-						 <td><img src="../shared/img/$path" id="productImg"></td>
+						 <td><img src="shared/img/$path" id="productImg"></td>
 					</tr>
 TABLE;
 			}
