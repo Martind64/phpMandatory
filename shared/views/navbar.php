@@ -2,7 +2,6 @@
 require_once(__DIR__.'\..\..\controllers\products\ProductsController.php');
 require_once(__DIR__.'\..\..\controllers\category\CategoryController.php');
 $categories = CategoryController::findAll();
-var_dump($categories);
 	
  ?>
 
@@ -10,7 +9,8 @@ var_dump($categories);
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	  <ul class="nav navbar-nav">
-	  	<?php foreach ($categories as $key => $categoryName) {
+	  	<?php foreach ($categories as $key => $category) {
+	  		echo "<li><a href=''>".$category['category']."</a></li>";
 	  	} ?>
 	  </ul>
 

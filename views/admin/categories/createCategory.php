@@ -1,30 +1,27 @@
 <?php session_start(); ?>
+<?php require_once(__DIR__.'/../auth.php'); ?>
+
 <!DOCTYPE html>
-<?php if (isset($_SESSION['currentUser'])){
-	if ($_SESSION['currentUser']['role'] != 'ROLE_ADMIN') {
-		echo 'You have to be an admin to access this page';
-	}else
-	{?>
-	
 <html>
 <head>
 	<title>Create category</title>
 	<?php require_once('../../../shared/bootstrap.php'); ?>
 </head>
 <body>
-
-<div class="container">
+<?php require_once(__DIR__.'/../shared/jumbotron.php') ?>
+<div class="container-fluid">
 <div class="row">
-	<div class="col-lg-5">
+	<?php require_once(__DIR__.'/../shared/sidebar.php') ?>
+
+	<div class="col-lg-4">
 	<p>Create a category</p>
-	<a href="../dashboard.php">go back</a>
 	<form action="../../../controllers/category/create.php" method="POST">
 	<div class="form-group">
 		<div class="col-lg-6">
 			<label>name</label>
 			<input class="form-control" type="text" name="name">
-		</div>
 			<button style="margin-top: 13%;" type="submit" class="btn btn-primary">Create</button>
+		</div>
 		</div>
 	</form>
 	</div>
@@ -32,6 +29,5 @@
 </div>
 
 </body>
-<?php }} // Finishes authorization ?>
 
 </html>

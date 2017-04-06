@@ -11,8 +11,8 @@ $productsController = new ProductsController();
 	<link rel="stylesheet" type="text/css" href="../shared/style.css">
 </head>
 <body>
-<?php require_once(__DIR__."/../shared/views/navbar.php") ?>
 
+<?php require_once(__DIR__."/../shared/views/navbar.php") ?>
 <div class="container-fluid">
 	<div class="col-lg-10 col-lg-push-1">
 	<table class="table table-hover">

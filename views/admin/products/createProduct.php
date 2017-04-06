@@ -1,29 +1,23 @@
-<?php session_start();
-require_once('../../../controllers/subCategory/SubCategoryController.php');
-?>
+<?php session_start(); ?>
+<?php require_once(__DIR__.'/../auth.php'); ?>
+<?php require_once('../../../controllers/subCategory/SubCategoryController.php');?>
 <!DOCTYPE html>
-<?php if (isset($_SESSION['currentUser'])){
-	if ($_SESSION['currentUser']['role'] != 'ROLE_ADMIN') {
-		echo 'You have to be an admin to access this page';
-		exit;
-	}}?>
-	
+
 <html>
 <head>
 	<title>Create Product</title>
 	<?php require_once('../../../shared/bootstrap.php'); ?>
 </head>
 <body>
+<?php require_once(__DIR__.'/../shared/jumbotron.php') ?>
 
-
-
-
-<div class="container">
+<div class="container-fluid">
 <div class="row">
-	<div class="col-lg-5">
-	Register page!
-	<a href="../dashboard.php">go back</a>
-	<form action="../../../controllers/products/create.php" method="POST">
+	<?php require_once(__DIR__.'/../shared/sidebar.php') ?>
+
+	<div class="col-lg-4">
+	<form action="controllers/products/create.php" method="POST">
+	<p>Create a product</p>
 	<div class="form-group">
 		<div class="col-lg-6">
 			<label>name</label>
