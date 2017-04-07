@@ -21,6 +21,7 @@
 			<th>Description</th>
 			<th>Price</th>
 			<th>Image</th>
+			<th>Buy</th>
 		</tr>
 			<?php foreach ($result as $key => $array) {
 			echo "<tr>";
@@ -28,6 +29,9 @@
 			echo "<td>".$array['description']."</td>";
 			echo "<td>".$array['price']."</td>";
 			echo "<td><img src='shared/img/".$array['imgPath']."' id='productImg'></td>";
+			echo "<form action='views/cart.php' method='POST'>
+			<td><button class='btn btn-primary' value='".$array['id']."' name='buyItem'>Buy</button></td>
+				</form>";
 			echo "</tr>";
 		} ?>
 		</table>
@@ -35,5 +39,8 @@
 	</div>
 	</div>
 </div>
+
+
+</script>
 </body>
 </html>
