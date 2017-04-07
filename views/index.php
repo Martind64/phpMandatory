@@ -13,6 +13,21 @@ $productsController = new ProductsController();
 <body>
 
 <?php require_once(__DIR__."/../shared/views/navbar.php") ?>
+
+<div class="container">
+	<div class="pull-right">
+		<?php if (isset($_SESSION['notEmail'])) {
+			echo $_SESSION['notEmail']."<br>";
+		} ?>
+		<?php 
+			if (isset($_SESSION['login-message'])) {
+				echo $_SESSION['login-message'];
+			}
+		 ?>
+	</div>
+</div>
+
+
 <div class="container">
 	<div class="col-lg-12">
 	<table class="table table-hover">

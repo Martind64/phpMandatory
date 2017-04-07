@@ -38,7 +38,7 @@ $subCategory = new SubCategoryController();
 			            <li>
 			    	      <form action="controllers\login\login.php" class="navbar-form" method="POST">
 					        <div class="form-group">
-					      	<a class="pull-right" href="register.php">register</a>
+					      	<a class="pull-right" href="views/register.php">register</a>
 					        	<span class="label label-default">Email</span>
 					       		<input type="text" class="form-control" placeholder="Email" name="email">
 					        	<span class="label label-default">Password</span>

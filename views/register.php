@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <?php require_once('../shared/bootstrap.php'); ?><!DOCTYPE html>
 <html>
 <head>
@@ -6,11 +6,39 @@
 </head>
 <body>
 
+<?php require_once(__DIR__."/../shared/views/navbar.php") ?>
+
+
 <div class="container">
-	<div class="col-lg-5">
-	<a href="index.php">go back</a><br>
-	Register page!
-	<form action="../controllers/user/create.php" method="POST">
+
+<?php if (isset($_SESSION['registerNotEmail'])) {
+	echo $_SESSION['registerNotEmail']."<br>";
+	}
+
+	if (isset($_SESSION['registerNotPhone'])) {
+		echo $_SESSION['registerNotPhone']."<br>";
+	}
+
+	if (isset($_SESSION['registerNotFirstname'])) {
+		echo $_SESSION['registerNotFirstname']."<br>";
+	}
+
+	if (isset($_SESSION['registerNotLastname'])) {
+		echo $_SESSION['registerNotLastname']."<br>";
+	}
+
+	if (isset($_SESSION['registerNotAddress'])) {
+		echo $_SESSION['registerNotAddress']."<br>";
+	}
+
+
+
+?>
+
+<br>
+	<div class="col-lg-5 col-lg-push-3">
+	Register an account!
+	<form action="controllers/user/create.php" method="POST">
 	<div class="form-group">
 		<div class="col-lg-6">
 			<label>firstname</label>

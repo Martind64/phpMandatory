@@ -4,16 +4,24 @@ require_once(__DIR__.'/../../Dbhandler.php');
 class LoginController{
 
 	function login(){
+
+		$this->validate();
+
 		$indexPage = '../../views/index.php';
 
 		$conn = new Dbhandler();
+
+		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+			$_SESSION['notEmail'] = "You need to use an email to login";
+			header('Location: ../../views/index.php');
+			die();
+		}
 		if (!isset($_POST['email']) || !isset($_POST['password'])) {
-			header('Location: index.php');
 			die();
 		}
 
 		if ($_POST['email'] == '' || $_POST['password'] == '') {
-			header('Location: index.php');
+			header('Location: ../../views/index.php');
 			die();
 		}
 
@@ -36,8 +44,6 @@ class LoginController{
 				header('Location: ../../views/index.php');
 			}else{
 				$_SESSION['currentUser'] = $currentUser;
-				$_SESSION['login-message'] = "you are logged in";
-
 				if ($currentUser['role'] == 'ROLE_ADMIN') {
 					header('Location: ../../views/admin/dashboard.php');
 				}
@@ -46,6 +52,16 @@ class LoginController{
 				}
 			}
 		}
+	}
+
+	function validate(){
+		if (isset($_SESSION['notEmail'])) {
+		unset($_SESSION['notEmail']);
+		}
+		if (isset($_SESSION['login-message'])) {
+			unset($_SESSION['login-message']);
+		}
+
 	}
 
 	function logout()

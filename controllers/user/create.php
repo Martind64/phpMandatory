@@ -10,7 +10,10 @@ if ($_POST['firstname'] && $_POST['lastname'] && $_POST['username'] && $_POST['e
 	$user = new User($_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['address'], $_POST['phoneNo'], $_POST['password']);
 
 	$userController->create($user);
+}else{
+	header('Location: ../../views/register.php');
 }
+
 
 
 ?>
