@@ -24,11 +24,15 @@ $subCategory = new SubCategoryController();
 	  		echo "</ul>";
 	  		echo "</li>";
 	  	} ?>
+
 	  </ul>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-right">
+  	  	<li>
+	        <a href="views/cart.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+	  	</li>
 	        <li class="dropdown">
 	          <?php if (!isset($_SESSION['currentUser'])) {
 	          	// end php goes here

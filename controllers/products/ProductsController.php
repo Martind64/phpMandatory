@@ -63,7 +63,7 @@ class ProductsController
 	function findBySubCategory(string $category){
 
 		$conn = new Dbhandler();
-		$query = "SELECT name, category_name, sub_category_name, description, price, img_path FROM products 
+		$query = "SELECT products.id, name, category_name, sub_category_name, description, price, img_path FROM products 
 		JOIN category ON category.id = products.category_id
 		JOIN sub_category on sub_category.id = products.sub_category_id
 		WHERE sub_category_name =?";
@@ -75,11 +75,24 @@ class ProductsController
 			$result = $stmt->get_result();
 
 			while ($row = $result->fetch_assoc()) {
-				$resultArray[] = ['name' => $row['name'], 'description' => $row['description'], 'imgPath' => $row['img_path'], 'price' => $row['price'], 'category' => $row['category_name'], 'subCategory' => $row['sub_category_name'] ];
+				$resultArray[] = ['id' => $row['id'], 'name' => $row['name'], 'description' => $row['description'], 'imgPath' => $row['img_path'], 'price' => $row['price'], 'category' => $row['category_name'], 'subCategory' => $row['sub_category_name'] ];
 			}
 			return $resultArray;
 		}else{
 			echo mysqli_error($conn->dbc);
+		}
+	}
+
+	function findById($id)
+	{
+		$conn = new Dbhandler();
+
+		$query = "SELECT name, description, price FROM products where id=?";
+		if ($stmt = $conn->dbc->prepare($query)) {
+			$stmt->bind_param('s', $id);
+			$stmt->execute();
+			$result = $stmt->get_result()->fetch_assoc();
+			return $result;
 		}
 	}
 
@@ -96,7 +109,7 @@ class ProductsController
 			$result = $stmt->get_result();
 
 			while ($row = $result->fetch_assoc()) {
-				$resultArray[] = ['name' => $row['name'], 'description' => $row['description'], 'imgPath' => $row['img_path'], 'price' => $row['price'], 'category' => $row['category_name'], 'subCategory' => $row['sub_category_name'] ];
+				$resultArray[] = ['id' => $row['id'], 'name' => $row['name'], 'description' => $row['description'], 'imgPath' => $row['img_path'], 'price' => $row['price'], 'category' => $row['category_name'], 'subCategory' => $row['sub_category_name'] ];
 			}
 
 			return $resultArray;

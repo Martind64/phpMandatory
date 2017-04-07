@@ -3,6 +3,7 @@
 <html>
 <head>
 	<title>register</title>
+	<?php require_once(__DIR__.'/../shared/bootstrap.php'); ?>
 </head>
 <body>
 

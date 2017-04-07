@@ -11,7 +11,7 @@ if ($_POST['firstname'] && $_POST['lastname'] && $_POST['username'] && $_POST['e
 
 	$userController->create($user);
 }else{
-	header('Location: ../../views/register.php');
+	header('Location: ../../views/register.php');	
 }
 
 
